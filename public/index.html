@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17253f">
+    <title>Río Claro | Soluciones para tu negocio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body.inicio {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: #f7f5f0;
+            color: #242d3b;
+            font-family: Arial, sans-serif;
+        }
+
+        .portal-inicio {
+            width: min(1180px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        .cabecera-inicio {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            min-height: 82px;
+            border-bottom: 1px solid #e8e3da;
+        }
+
+        .marca-rio {
+            display: inline-flex;
+            align-items: center;
+            gap: 11px;
+            color: #17253f;
+            text-decoration: none;
+        }
+
+        .marca-simbolo {
+            display: grid;
+            width: 40px;
+            height: 40px;
+            place-items: center;
+            border-radius: 12px 12px 12px 3px;
+            background: #ef7258;
+            color: white;
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .marca-texto strong,
+        .marca-texto span {
+            display: block;
+        }
+
+        .marca-texto strong {
+            font-size: 17px;
+            letter-spacing: -.02em;
+        }
+
+        .marca-texto span {
+            margin-top: 3px;
+            color: #7a7f87;
+            font-size: 9px;
+            letter-spacing: .13em;
+        }
+
+        .nav-inicio {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-inicio a {
+            color: #545d69;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .nav-inicio a:hover {
+            color: #d65f48;
+        }
+
+        .nav-inicio .nav-chat {
+            padding: 11px 15px;
+            border-radius: 7px;
+            background: #17253f;
+            color: white;
+            font-weight: 700;
+        }
+
+        .nav-inicio .nav-chat:hover {
+            background: #263a5d;
+            color: white;
+        }
+
+        .hero-inicio {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(250px, .85fr);
+            align-items: center;
+            gap: 36px;
+            min-height: 325px;
+            margin-top: 30px;
+            padding: clamp(28px, 5vw, 58px);
+            border-radius: 20px;
+            background: #17253f;
+            color: #fff;
+        }
+
+        .hero-inicio::after {
+            position: absolute;
+            right: -100px;
+            bottom: -240px;
+            width: 490px;
+            height: 490px;
+            border: 1px solid rgba(255, 255, 255, .13);
+            border-radius: 50%;
+            box-shadow: 0 0 0 42px rgba(255, 255, 255, .035),
+                0 0 0 85px rgba(255, 255, 255, .025);
+            content: "";
+            pointer-events: none;
+        }
+
+        .hero-copy {
+            position: relative;
+            z-index: 1;
+            max-width: 610px;
+        }
+
+        .hero-etiqueta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffb09c;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .14em;
+        }
+
+        .hero-etiqueta::before {
+            width: 20px;
+            height: 2px;
+            background: #ef7258;
+            content: "";
+        }
+
+        .hero-copy h1 {
+            margin: 18px 0 14px;
+            color: white;
+            font-size: clamp(34px, 5vw, 52px);
+            letter-spacing: -.045em;
+            line-height: 1.04;
+        }
+
+        .hero-copy p {
+            max-width: 490px;
+            margin: 0;
+            color: #d1d8e4;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .hero-accion {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 24px;
+            padding: 13px 17px;
+            border-radius: 7px;
+            background: #ef7258;
+            color: #1d2738;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .hero-accion:hover {
+            background: #ff9279;
+        }
+
+        .hero-ficha {
+            position: relative;
+            z-index: 1;
+            justify-self: end;
+            width: min(100%, 315px);
+            padding: 22px;
+            border: 1px solid rgba(255, 255, 255, .18);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .08);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-ficha small {
+            color: #b7c3d4;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .12em;
+        }
+
+        .hero-ficha strong {
+            display: block;
+            margin: 12px 0 8px;
+            color: white;
+            font-size: 20px;
+            line-height: 1.3;
+        }
+
+        .hero-ficha p {
+            margin: 0;
+            color: #d1d8e4;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .punto-activo {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin-right: 7px;
+            border-radius: 50%;
+            background: #8bd1a6;
+        }
+
+        .contenido-inicio {
+            padding: 38px 0 28px;
+        }
+
+        .titulo-seccion {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 17px;
+        }
+
+        .titulo-seccion span {
+            color: #d65f48;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .13em;
+        }
+
+        .titulo-seccion h2 {
+            margin: 7px 0 0;
+            color: #17253f;
+            font-size: 23px;
+            letter-spacing: -.025em;
+        }
+
+        .titulo-seccion p {
+            margin: 0 0 3px;
+            color: #747a82;
+            font-size: 12px;
+        }
+
+        .servicios-inicio {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 16px;
+        }
+
+        .servicio-inicio {
+            display: flex;
+            flex-direction: column;
+            min-height: 210px;
+            padding: 23px;
+            border: 1px solid #e8e3da;
+            border-radius: 13px;
+            background: #fff;
+        }
+
+        .servicio-inicio.facturas {
+            border-top: 3px solid #ef7258;
+        }
+
+        .servicio-inicio.asistente {
+            border-top: 3px solid #526caa;
+        }
+
+        .servicio-categoria {
+            color: #82848a;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .12em;
+        }
+
+        .servicio-cabecera {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-top: 16px;
+        }
+
+        .servicio-icono {
+            display: grid;
+            flex: 0 0 43px;
+            width: 43px;
+            height: 43px;
+            place-items: center;
+            border-radius: 11px;
+            background: #fff0ec;
+            color: #c9533d;
+            font-size: 19px;
+        }
+
+        .asistente .servicio-icono {
+            background: #eef1fa;
+            color: #415b9b;
+        }
+
+        .servicio-cabecera h3 {
+            margin: 0;
+            color: #17253f;
+            font-size: 17px;
+        }
+
+        .servicio-inicio > p {
+            max-width: 540px;
+            margin: 14px 0 19px;
+            color: #69717c;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .enlace-servicio {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-top: auto;
+            color: #bd4d39;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .asistente .enlace-servicio {
+            color: #405b99;
+        }
+
+        .enlace-servicio:hover {
+            text-decoration: underline;
+        }
+
+        .atajos-inicio {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .atajo-inicio {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-height: 66px;
+            padding: 12px 14px;
+            border: 1px solid #e8e3da;
+            border-radius: 10px;
+            background: #fbfaf7;
+            color: #394251;
+            text-decoration: none;
+        }
+
+        .atajo-inicio:hover {
+            border-color: #efaa98;
+            background: white;
+        }
+
+        .atajo-numero {
+            color: #d65f48;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .atajo-inicio strong,
+        .atajo-inicio small {
+            display: block;
+        }
+
+        .atajo-inicio strong {
+            font-size: 12px;
+        }
+
+        .atajo-inicio small {
+            margin-top: 4px;
+            color: #7b8087;
+            font-size: 10px;
+        }
+
+        .seccion-contenido {
+            margin-top: 38px;
+        }
+
+        .preguntas-inicio {
+            display: grid;
+            gap: 9px;
+        }
+
+        .pregunta-inicio {
+            border: 1px solid #e8e3da;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .pregunta-inicio summary {
+            position: relative;
+            padding: 16px 44px 16px 17px;
+            color: #26354d;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            list-style: none;
+        }
+
+        .pregunta-inicio summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .pregunta-inicio summary::after {
+            position: absolute;
+            top: 50%;
+            right: 17px;
+            color: #d65f48;
+            content: "+";
+            font-size: 20px;
+            font-weight: 400;
+            transform: translateY(-50%);
+        }
+
+        .pregunta-inicio[open] summary::after {
+            content: "−";
+        }
+
+        .respuesta-pregunta {
+            padding: 0 17px 16px;
+            color: #69717c;
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .respuesta-pregunta a {
+            color: #bd4d39;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .respuesta-pregunta a:hover {
+            text-decoration: underline;
+        }
+
+        .politicas-inicio {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .politica-inicio {
+            padding: 20px;
+            border: 1px solid #e8e3da;
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        .politica-etiqueta {
+            color: #d65f48;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .12em;
+        }
+
+        .politica-inicio h3 {
+            margin: 10px 0 8px;
+            color: #17253f;
+            font-size: 16px;
+        }
+
+        .politica-inicio p {
+            margin: 0;
+            color: #69717c;
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .ayuda-inicio {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 24px;
+            padding: 24px;
+            border-radius: 13px;
+            background: #eceff5;
+        }
+
+        .ayuda-inicio h3 {
+            margin: 0 0 7px;
+            color: #17253f;
+            font-size: 17px;
+        }
+
+        .ayuda-inicio p {
+            max-width: 650px;
+            margin: 0;
+            color: #626c7a;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .enlaces-ayuda {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .enlace-ayuda {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+            padding: 0 13px;
+            border: 1px solid #d5dbe5;
+            border-radius: 7px;
+            background: white;
+            color: #293a59;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .enlace-ayuda:hover {
+            border-color: #efaa98;
+        }
+
+        .pie-inicio {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 22px 0 28px;
+            border-top: 1px solid #e8e3da;
+            color: #858991;
+            font-size: 11px;
+        }
+
+        @media (max-width: 760px) {
+            .portal-inicio {
+                width: min(100% - 32px, 620px);
+            }
+
+            .cabecera-inicio {
+                min-height: 70px;
+            }
+
+            .nav-inicio {
+                width: 100%;
+                gap: 14px;
+                overflow-x: auto;
+                padding: 3px 0 7px;
+            }
+
+            .nav-inicio a {
+                flex: 0 0 auto;
+                white-space: nowrap;
+            }
+
+            .hero-inicio {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                min-height: 0;
+                margin-top: 18px;
+                padding: 29px;
+            }
+
+            .hero-ficha {
+                justify-self: stretch;
+                width: auto;
+            }
+
+            .servicios-inicio {
+                grid-template-columns: 1fr;
+            }
+
+            .servicio-inicio {
+                min-height: 185px;
+            }
+
+            .atajos-inicio {
+                grid-template-columns: 1fr;
+            }
+
+            .politicas-inicio {
+                grid-template-columns: 1fr;
+            }
+
+            .ayuda-inicio {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .portal-inicio {
+                width: calc(100% - 24px);
+            }
+
+            .marca-texto span {
+                font-size: 8px;
+            }
+
+            .nav-inicio .nav-chat {
+                padding: 10px 11px;
+                font-size: 11px;
+            }
+
+            .hero-inicio {
+                padding: 24px 21px;
+            }
+
+            .titulo-seccion {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .pie-inicio {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body class="inicio">
+    <div class="portal-inicio">
+        <header class="cabecera-inicio">
+            <a class="marca-rio" href="/" aria-label="Río Claro, inicio">
+                <span class="marca-simbolo" aria-hidden="true">RC</span>
+                <span class="marca-texto">
+                    <strong>Río Claro</strong>
+                    <span>DISTRIBUCIÓN CONFIABLE</span>
+                </span>
+            </a>
+            <nav class="nav-inicio" aria-label="Navegación principal">
+                <a href="#preguntas-frecuentes">Preguntas frecuentes</a>
+                <a href="#politicas">Políticas</a>
+                <a href="#ayuda">Ayuda</a>
+                <a class="nav-chat" href="/chat.html">Ir al asistente <span aria-hidden="true">↗</span></a>
+            </nav>
+        </header>
+
+        <section class="hero-inicio" aria-labelledby="titulo-bienvenida">
+            <div class="hero-copy">
+                <span class="hero-etiqueta">UNA FORMA MÁS SIMPLE DE ATENDER</span>
+                <h1 id="titulo-bienvenida">Tu operación, más clara.</h1>
+                <p>
+                    Herramientas de Río Claro para recibir facturas, consultar registros
+                    y resolver preguntas sobre nuestros productos y servicios.
+                </p>
+                <a class="hero-accion" href="/proveedor.html#facturas">
+                    Revisar facturas de proveedores <span aria-hidden="true">→</span>
+                </a>
+            </div>
+            <aside class="hero-ficha" aria-label="Información del asistente">
+                <small>ATENCIÓN DIGITAL</small>
+                <strong>Una consulta a la vez. Empecemos.</strong>
+                <p>
+                    <span class="punto-activo" aria-hidden="true"></span>
+                    El asistente está disponible para tus preguntas.
+                </p>
+            </aside>
+        </section>
+
+        <div class="aviso-interno" role="note">
+            Demo pública: puedes ingresar datos reales o de prueba bajo tu responsabilidad. Asegúrate de contar con autorización para compartirlos. La información enviada se procesa mediante servicios de Azure y los registros de facturas guardados pueden ser consultados por cualquier persona con acceso a esta demo.
+        </div>
+
+        <main class="contenido-inicio">
+            <section aria-labelledby="titulo-servicios">
+                <div class="titulo-seccion">
+                    <div>
+                        <span>HERRAMIENTAS RÍO CLARO</span>
+                        <h2 id="titulo-servicios">¿Qué necesitas hacer?</h2>
+                    </div>
+                    <p>Selecciona un servicio para comenzar.</p>
+                </div>
+                <div class="servicios-inicio">
+                    <article class="servicio-inicio facturas">
+                        <div class="servicio-cabecera">
+                            <span class="servicio-icono" aria-hidden="true">▤</span>
+                            <h3>Facturas de proveedores</h3>
+                        </div>
+                        <p>
+                            Analiza una factura PDF, revisa los datos extraídos y busca coincidencias
+                            de proveedor y folio antes de registrarla.
+                        </p>
+                        <a class="enlace-servicio" href="/proveedor.html#facturas">
+                            Abrir recepción de facturas <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+                    <article class="servicio-inicio asistente">
+                        <span class="servicio-categoria">ATENCIÓN Y CONSULTAS</span>
+                        <div class="servicio-cabecera">
+                            <span class="servicio-icono" aria-hidden="true">✦</span>
+                            <h3>Asistente Río Claro</h3>
+                        </div>
+                        <p>
+                            Pregunta sobre productos, políticas y procesos. El asistente utiliza
+                            información configurada para Río Claro.
+                        </p>
+                        <a class="enlace-servicio" href="/chat.html">
+                            Conversar con el asistente <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="seccion-contenido" id="preguntas-frecuentes" aria-labelledby="titulo-faq">
+                <div class="titulo-seccion">
+                    <div>
+                        <span>RESPUESTAS RÁPIDAS</span>
+                        <h2 id="titulo-faq">Preguntas frecuentes</h2>
+                    </div>
+                    <p>Información útil sin tener que iniciar una conversación.</p>
+                </div>
+                <div class="preguntas-inicio">
+                    <details class="pregunta-inicio">
+                        <summary>¿Cuál es la política de devoluciones?</summary>
+                        <div class="respuesta-pregunta">
+                            Puedes solicitar una devolución dentro de los 30 días naturales posteriores
+                            a la compra, presentando comprobante o evidencia. El producto no debe tener
+                            daños por uso indebido y debe conservar sus componentes esenciales y, cuando
+                            aplique, el empaque original. No se aceptan productos personalizados,
+                            modificados después de la venta o dañados por uso incorrecto. La empresa
+                            puede autorizar reembolso, sustitución o nota de crédito; Atención al Cliente
+                            toma la decisión final.
+                            <a href="/chat.html?pregunta=%C2%BFCu%C3%A1l%20es%20la%20pol%C3%ADtica%20de%20devoluciones%3F">Consultar una duda sobre devoluciones</a>.
+                        </div>
+                    </details>
+                    <details class="pregunta-inicio">
+                        <summary>¿Cómo consulto una factura?</summary>
+                        <div class="respuesta-pregunta">
+                            Abre la consulta e ingresa el folio. Si no encuentras el registro, verifica
+                            que el folio esté escrito correctamente. <a href="/proveedor.html#consulta-factura">Ir a consultar factura</a>.
+                        </div>
+                    </details>
+                    <details class="pregunta-inicio">
+                        <summary>¿Qué formato acepta la recepción de facturas de proveedores?</summary>
+                        <div class="respuesta-pregunta">
+                            En este prototipo se reciben facturas en PDF. El sistema intenta extraer
+                            sus datos y señalar coincidencias de proveedor y folio; Cuentas por Pagar
+                            debe revisar y aprobar antes de cualquier pago.
+                            <a href="/proveedor.html#facturas">Recibir una factura PDF</a>.
+                        </div>
+                    </details>
+                    <details class="pregunta-inicio">
+                        <summary>¿El registro digital para clientes es un CFDI?</summary>
+                        <div class="respuesta-pregunta">
+                            No. Es un registro interno de la información capturada; no genera un
+                            comprobante fiscal ni un archivo descargable.
+                            <a href="/proveedor.html#captura-cliente">Ver captura para clientes</a>.
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <section class="seccion-contenido" id="politicas" aria-labelledby="titulo-politicas">
+                <div class="titulo-seccion">
+                    <div>
+                        <span>INFORMACIÓN PARA CLIENTES</span>
+                        <h2 id="titulo-politicas">Políticas y compromisos</h2>
+                    </div>
+                </div>
+                <div class="politicas-inicio">
+                    <article class="politica-inicio">
+                        <span class="politica-etiqueta">DEVOLUCIONES</span>
+                        <h3>30 días para solicitar una devolución</h3>
+                        <p>
+                            Se requiere comprobante o evidencia de compra. Aplican condiciones sobre
+                            el estado del producto y excepciones; Atención al Cliente revisa cada caso
+                            y define la resolución.
+                        </p>
+                    </article>
+                    <article class="politica-inicio">
+                        <span class="politica-etiqueta">REVISIÓN DE FACTURAS</span>
+                        <h3>La detección no reemplaza la aprobación</h3>
+                        <p>
+                            Una coincidencia de proveedor y folio ayuda a identificar un posible
+                            duplicado. El equipo de Cuentas por Pagar debe validar la factura antes
+                            de autorizar cualquier pago.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="seccion-contenido" id="ayuda" aria-labelledby="titulo-ayuda">
+                <div class="titulo-seccion">
+                    <div>
+                        <span>TE ACOMPAÑAMOS</span>
+                        <h2 id="titulo-ayuda">¿Necesitas ayuda?</h2>
+                    </div>
+                </div>
+                <div class="ayuda-inicio">
+                    <div>
+                        <h3>Encuentra el siguiente paso</h3>
+                        <p>
+                            Consulta las respuestas frecuentes o las políticas disponibles. Para
+                            decisiones oficiales,
+                            confirma con el área de Atención al Cliente o Cuentas por Pagar.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="pie-inicio">
+            <span>Río Claro · Distribución confiable</span>
+            <span>Demo pública · Datos bajo responsabilidad de quien los ingresa</span>
+        </footer>
+    </div>
+</body>
+</html>

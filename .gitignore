@@ -1,0 +1,8 @@
+.env
+.env.*
+!.env.example
+node_modules/
+uploads/
+data/*.csv
+*.zip
+npm-debug.log*

@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Administración - Río Claro AI</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <a href="/" class="volver">
+            ← Volver al inicio
+        </a>
+
+        <h1>🏢 Portal Administrativo</h1>
+
+        <div id="dashboard"></div>
+
+        <br>
+
+        <div class="layout-admin">
+
+            <!-- FACTURAS -->
+
+            <div class="tarjeta">
+
+                <h2>📄 Recepción de facturas de proveedores</h2>
+                <p class="aviso-interno">Revisa proveedor, RFC y folio. Una coincidencia bloquea el segundo registro; la aprobación del pago sigue siendo responsabilidad de Cuentas por Pagar.</p>
+
+                <input
+                    type="file"
+                    id="archivo"
+                    accept=".pdf,application/pdf">
+
+                <br><br>
+
+                <button id="btnAnalizar">
+                    Analizar Factura
+                </button>
+
+                <div id="resultado"></div>
+
+            </div>
+
+            <!-- CHATBOT -->
+
+            <div class="tarjeta">
+
+                <h2>💬 Asistente Río Claro</h2>
+
+                <div id="chatMensajes"
+                     class="chat-box"
+                     aria-live="polite">
+
+                    <div class="mensaje-bot">
+                        Hola, soy el asistente de Río Claro.
+                        ¿Qué deseas consultar?
+                    </div>
+
+                </div>
+
+                <textarea
+                    id="mensajeChat"
+                    rows="4"
+                    placeholder="Escribe tu pregunta..."></textarea>
+
+                <br><br>
+
+                <button id="btnEnviarChat">
+                    Enviar
+                </button>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="tarjeta"
+             id="historial">
+        </div>
+
+    </div>
+
+    <script src="chat.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>

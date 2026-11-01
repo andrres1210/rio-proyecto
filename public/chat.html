@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f3f6fa">
+    <title>Chat Río Claro | Estamos para ayudarte</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="chat-page">
+    <main class="chat-layout">
+        <a href="/" class="volver chat-back">← Volver al inicio</a>
+
+        <section class="chat-panel" aria-label="Chat de Río Claro">
+            <header class="chat-header">
+                <div class="chat-avatar" aria-hidden="true">RC</div>
+                <div class="chat-header-copy">
+                    <h1>Conversemos</h1>
+                    <p>Asistente virtual de Río Claro <span class="estado-en-linea">Disponible</span></p>
+                </div>
+                <div class="chat-header-icon" aria-hidden="true">💬</div>
+            </header>
+
+            <div
+                id="chatMensajes"
+                class="chat-box chat-mensajes"
+                aria-live="polite"
+                aria-relevant="additions text"
+                aria-label="Conversación">
+                <div class="mensaje-bot mensaje-bienvenida">
+                    <span class="mensaje-avatar" aria-hidden="true">RC</span>
+                    <div class="burbuja-mensaje">
+                        <strong>Río Claro</strong>
+                        <div class="mensaje-contenido">¡Hola! Qué gusto tenerte por aquí. ¿En qué te puedo ayudar hoy?</div>
+                        <button class="boton-leer-respuesta" type="button" aria-label="Leer respuesta en voz alta" aria-pressed="false">
+                            <span aria-hidden="true">🔊</span>
+                            <span>Leer respuesta</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-sugerencias" aria-label="Preguntas frecuentes">
+                <span>Quizá te interese</span>
+                <div>
+                    <button type="button" class="sugerencia-chat" data-pregunta="¿Cuál es la política de devoluciones?">
+                        Devoluciones
+                    </button>
+                    <button type="button" class="sugerencia-chat" data-pregunta="¿Cómo puedo consultar el estado de mi factura?">
+                        Consultar una factura
+                    </button>
+                    <button type="button" class="sugerencia-chat" data-pregunta="Necesito ayuda con una compra">
+                        Ayuda con una compra
+                    </button>
+                </div>
+            </div>
+
+            <form id="formChat" class="chat-compositor">
+                <label class="sr-only" for="mensajeChat">Escribe tu mensaje</label>
+                <textarea
+                    id="mensajeChat"
+                    rows="1"
+                    maxlength="2000"
+                    placeholder="Escribe tu mensaje..."
+                    aria-label="Escribe tu mensaje"></textarea>
+                <button
+                    id="btnDictarChat"
+                    class="boton-dictado"
+                    type="button"
+                    aria-label="Dictar mensaje por voz"
+                    title="Dictar mensaje por voz">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                        <rect x="9" y="3" width="6" height="12" rx="3" stroke="currentColor" stroke-width="1.8"/>
+                        <path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3m-4 0h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <button id="btnEnviarChat" type="submit" aria-label="Enviar mensaje" title="Enviar mensaje">
+                    <span>Enviar</span>
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <p id="estadoDictado" class="chat-ayuda" role="status" aria-live="polite">
+                    Enter para enviar <span>·</span> Mayús + Enter para nueva línea
+                </p>
+            </form>
+        </section>
+
+        <p class="chat-nota">Demo pública: eres responsable de los datos que ingreses y de contar con autorización para compartirlos. Los mensajes se procesan mediante servicios de Azure. Las respuestas las genera el asistente virtual de Río Claro. El dictado usa el servicio de reconocimiento de voz de tu navegador y requiere permiso para usar el micrófono.</p>
+    </main>
+    <script src="chat.js"></script>
+</body>
+</html>

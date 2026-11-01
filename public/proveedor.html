@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturas de proveedores | Río Claro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="contenedor portal-facturacion">
+        <a href="/" class="volver">← Volver al inicio</a>
+        <h1>Facturas de proveedores</h1>
+        <p>Recibe y consulta facturas de proveedores. Sube el archivo para extraer sus datos y revisar si el proveedor ya presentó ese folio.</p>
+        <div class="aviso-interno" role="note">
+            Demo pública: puedes ingresar datos reales o de prueba bajo tu responsabilidad y debes contar con autorización para compartirlos. Las facturas PDF se procesan mediante servicios de Azure y los registros guardados pueden ser consultados por cualquier persona con acceso a esta demo.
+        </div>
+
+        <div class="portal-grid">
+            <section class="tarjeta" id="facturas">
+                <h2>Recibir factura de proveedor</h2>
+                <p>Sube la factura en formato PDF. El sistema extraerá proveedor, RFC, folio e importes; antes de registrarla, comprobará si ya existe una factura con el mismo proveedor y folio.</p>
+                <div class="aviso-interno" role="note">
+                    La detección ayuda a prevenir registros duplicados, pero Cuentas por Pagar debe revisar y aprobar cada factura antes de pagarla.
+                </div>
+                <form id="formSubirFactura">
+                    <label class="campo-formulario" for="archivo">
+                        Factura del proveedor (PDF)
+                        <input type="file" id="archivo" accept=".pdf,application/pdf" required>
+                    </label>
+                    <button id="btnAnalizar" type="submit">Analizar y registrar</button>
+                </form>
+                <div id="resultado" aria-live="polite"></div>
+            </section>
+
+            <section class="tarjeta" id="captura-cliente">
+                <h2>Captura manual para clientes</h2>
+                <p>Registra los datos del cliente y los conceptos cuando necesites un registro interno de una factura digital.</p>
+                <div class="aviso-interno" role="note">
+                    Este portal crea un registro digital interno. No genera un archivo descargable ni un CFDI fiscal.
+                </div>
+
+                <form id="formFacturaDigital">
+                    <label class="campo-formulario" for="nombreCliente">
+                        Cliente o razón social
+                        <input id="nombreCliente" name="cliente" type="text" maxlength="150" required>
+                    </label>
+
+                    <label class="campo-formulario" for="rfcCliente">
+                        RFC
+                        <input id="rfcCliente" name="rfc" type="text" maxlength="13" minlength="12" autocomplete="off" required>
+                    </label>
+
+                    <div class="conceptos-encabezado">
+                        <h3>Conceptos</h3>
+                        <button id="btnAgregarConcepto" class="boton-secundario" type="button">Agregar concepto</button>
+                    </div>
+                    <div id="listaConceptos" class="lista-conceptos"></div>
+
+                    <div class="totales-factura" aria-live="polite">
+                        <p>Subtotal: <strong id="subtotalVista">$0.00</strong></p>
+                        <p>Impuestos: <strong id="impuestosVista">$0.00</strong></p>
+                        <p class="total-destacado">Total: <strong id="totalVista">$0.00</strong></p>
+                    </div>
+
+                    <button id="btnCrearFactura" type="submit">Crear registro digital para cliente</button>
+                </form>
+
+                <div id="resultadoDigital" aria-live="polite"></div>
+            </section>
+        </div>
+
+        <section class="tarjeta consulta-factura" id="consulta-factura">
+            <h2>Consultar una factura</h2>
+            <form id="formConsultar" class="form-consulta">
+                <label class="campo-formulario" for="folioConsulta">
+                    Folio de la factura
+                    <input type="text" id="folioConsulta" placeholder="Ej. RC-2026-000001" required>
+                </label>
+                <button id="btnConsultar" type="submit">Consultar folio</button>
+            </form>
+            <div id="estadoFactura" aria-live="polite"></div>
+        </section>
+    </main>
+    <script src="proveedor.js"></script>
+</body>
+</html>
