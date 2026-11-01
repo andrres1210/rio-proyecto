@@ -1,5 +1,21 @@
 # Explicación del proyecto Río Claro AI
 
+## Datos del proyecto
+
+- **Integrante:** Jose Andres Moo Aban
+- **Nombre del proyecto:** Río Claro AI
+- **Tecnologías:** GitHub Copilot como apoyo al desarrollo; Microsoft Azure AI
+  Foundry con el modelo `gpt-4.1-mini-1` y el agente configurado con sus fuentes
+  de conocimiento; Node.js, Express y Azure App Service.
+- **Demo pública:** <https://rio-claro-practica-77486.azurewebsites.net/>
+- **Repositorio GitHub:** <https://github.com/andrres1210/rio-proyecto>
+- **Descripción:** Se desarrolló Río Claro AI, un portal web de demostración
+  para atención al cliente y gestión básica de facturas. Su asistente responde
+  preguntas sobre productos, políticas y procesos con base en el conocimiento
+  configurado en Azure AI Foundry. También permite analizar facturas PDF,
+  detectar posibles duplicados y registrar información digital para revisión
+  humana.
+
 ## 1. ¿Qué es Río Claro AI?
 
 Río Claro AI es un portal web de demostración para la atención a clientes y la
